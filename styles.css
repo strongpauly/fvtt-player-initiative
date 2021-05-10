@@ -2,6 +2,6 @@ input[type="number"].initiative-input {
   color: white;
 }
 
-.token-initiative {
+.initiative-editable {
   cursor: text;
 }

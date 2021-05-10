@@ -2,12 +2,11 @@ class InitiativeEditor {
     constructor(combatant) {
         this.combatant = combatant;
         this.parentDiv = document.querySelector(`li.combatant[data-combatant-id="${this.combatant._id}"] .token-initiative`);
-
+        this.parentDiv.className = `${this.parentDiv.className} initiative-editable`
         const originalChildren = Array.from(this.parentDiv.children);
         let editing = false;
     
         const setInitiative = async (initiative) => game.combat.updateCombatant({_id: this.combatant._id, initiative})
-        
     
         const toggle = () => {
             editing = !editing;

@@ -1,8 +1,8 @@
 {
   "name": "fvtt-player-initiative",
-  "title": "Foundry VTT Player Initiative",
+  "title": "Edit Player Initiative",
   "description": "Allow players to edit their own initiative",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Paul Potsides",
   "scripts": ["InitiativeEditor.js", "index.js"],
   "styles": ["styles.css"],
@@ -10,7 +10,7 @@
   "packs": [],
   "url": "https://github.com/strongpauly/fvtt-player-initiative",
   "download": "https://github.com/strongpauly/fvtt-player-initiative/archive/refs/heads/main.zip",
-  "manifest": "https://raw.githubusercontent.com/strongpauly/vtt-player-initiative/main/module.json",
+  "manifest": "https://raw.githubusercontent.com/strongpauly/fvtt-player-initiative/main/module.json",
   "minimumCoreVersion": "0.7.9",
-  "compatibleCoreVersion": "0.7.9"
+  "compatibleCoreVersion": "0.8.2"
 }
