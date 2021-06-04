@@ -2,7 +2,7 @@
   "name": "fvtt-player-initiative",
   "title": "Edit Player Initiative",
   "description": "Allow players to edit their own initiative",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "author": "Paul Potsides",
   "scripts": ["InitiativeEditor.js", "index.js"],
   "styles": ["styles.css"],
