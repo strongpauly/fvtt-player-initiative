@@ -1,8 +1,9 @@
-Hooks.on("renderCombatTracker", function() {
-    if(game.combat) {
-        game.combat.combatants.filter(c => c.owner).map(c => 
-            new InitiativeEditor(c)
-        );
+Hooks.on("renderCombatTracker", async () => {
+  if (game.combat) {
+    if (!game.user.isGM) {
+      game.combat.combatants
+        .filter((c) => c.isOwner)
+        .map((c) => new InitiativeEditor(c));
     }
+  }
 });
-
