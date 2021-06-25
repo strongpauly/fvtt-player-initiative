@@ -5,3 +5,11 @@ input[type="number"].initiative-input {
 .initiative-editable {
   cursor: text;
 }
+
+#edit-initiative-dialog {
+  padding-bottom: 1rem;
+}
+
+.initiative-dialog-input.invalid {
+  border: 1px solid red;
+}
