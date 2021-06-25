@@ -22,17 +22,42 @@ class InitiativeEditorDialog extends Dialog {
         },
       },
       default: "confirm",
-      close: async (html) => {
-        const dialog = html[0];
+      close: async () => {
+        const inputs = this.getInputs();
         const updates = combatants.map((c) => ({
           _id: c.id,
-          initiative: dialog.querySelector(`input[name="combatant-${c.id}"]`)
-            .valueAsNumber,
+          initiative: inputs[0].valueAsNumber,
         }));
         // await Combatant.updateDocuments(updates);
         await Promise.all(combatants.map((c, i) => c.update(updates[i])));
         close();
       },
     });
+    this.combatants = combatants;
+  }
+
+  getInputs() {
+    const dialog = this._element[0];
+    return this.combatants.map((c) =>
+      dialog.querySelector(`input[name="combatant-${c.id}"]`)
+    );
+  }
+
+  validate() {
+    const inputs = this.getInputs();
+    inputs.forEach((i) => (i.className = "initiative-dialog-input"));
+    const invalidInputs = inputs.filter((i) => isNaN(i.valueAsNumber));
+    invalidInputs.forEach((i) => (i.className = `${i.className} invalid`));
+    if (invalidInputs.length) {
+      invalidInputs[0].focus();
+      return false;
+    }
+    return true;
+  }
+
+  async close() {
+    if (this.validate()) {
+      await super.close();
+    }
   }
 }
