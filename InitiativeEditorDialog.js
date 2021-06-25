@@ -24,9 +24,9 @@ class InitiativeEditorDialog extends Dialog {
       default: "confirm",
       close: async () => {
         const inputs = this.getInputs();
-        const updates = combatants.map((c) => ({
+        const updates = combatants.map((c, i) => ({
           _id: c.id,
-          initiative: inputs[0].valueAsNumber,
+          initiative: inputs[i].valueAsNumber,
         }));
         // await Combatant.updateDocuments(updates);
         await Promise.all(combatants.map((c, i) => c.update(updates[i])));
