@@ -1,35 +1,38 @@
+function createContent(combatants) {
+  return `<div id="edit-initiative-dialog"><h2>${
+    game.user.name
+  } enter your initiative values!</h2>
+  <div>${combatants
+    .map(
+      (c) =>
+        `<div>
+        <label for="combatant-${c.id}">${c.name}</label>
+        <input type="number" class="initiative-dialog-input" name="combatant-${
+          c.id
+        }" value="${c.initiative != null ? c.initiative : ""}"/>
+       </div>`
+    )
+    .join("")}</div></div>`;
+}
+
 class InitiativeEditorDialog extends Dialog {
+  _confirming = false;
+
   constructor(close, combatants) {
     super({
       title: "Roll for initiatve!",
-      content: `<div id="edit-initiative-dialog"><h2>${
-        game.user.name
-      } enter your initiative values!</h2>
-      <div>${combatants
-        .map(
-          (c) =>
-            `<div>
-            <label for="combatant-${c.id}">${c.name}</label>
-            <input type="number" class="initiative-dialog-input" name="combatant-${c.id}" value="${c.initiative}"/>
-           </div>`
-        )
-        .join("")}</div></div>`,
+      content: createContent(combatants),
       buttons: {
         confirm: {
           icon: `<i class="fas fa-check"></i>`,
           label: "Confirm",
-          callback: () => {},
+          callback: () => {
+            this._confirming = true;
+          },
         },
       },
-      default: "confirm",
       close: async () => {
-        const inputs = this.getInputs();
-        const updates = combatants.map((c, i) => ({
-          _id: c.id,
-          initiative: inputs[i].valueAsNumber,
-        }));
-        // await Combatant.updateDocuments(updates);
-        await Promise.all(combatants.map((c, i) => c.update(updates[i])));
+        await this.save();
         close();
       },
     });
@@ -59,5 +62,33 @@ class InitiativeEditorDialog extends Dialog {
     if (this.validate()) {
       await super.close();
     }
+  }
+
+  setCombatants(combatants) {
+    const inputs = this.getInputs();
+    let needsRerender = this.combatants.length !== combatants.length;
+    inputs.forEach((input, i) => {
+      const combatant = combatants[i];
+      if (input.name !== `combatant-${combatants.id}`) {
+        needsRerender = true;
+      } else if (combatant.initiative != null) {
+        input.valueAsNumber = combatant.initiative;
+      }
+    });
+    this.combatants = combatants;
+    if (needsRerender) {
+      this.data.content = createContent(combatants);
+      this.render(true);
+    }
+  }
+
+  async save() {
+    const inputs = this.getInputs();
+    const updates = this.combatants.map((c, i) => ({
+      _id: c.id,
+      initiative: inputs[i].valueAsNumber,
+    }));
+    // await Combatant.updateDocuments(updates);
+    await Promise.all(this.combatants.map((c, i) => c.update(updates[i])));
   }
 }

@@ -5,16 +5,19 @@
       const myCombatants = game.combat.combatants.filter((c) => c.isOwner);
       myCombatants.forEach((c) => new InitiativeEditor(c));
 
-      if (
-        !dialog &&
-        !game.combat.started &&
-        myCombatants.filter((myC) => myC.initiative == null).length > 0
-      ) {
-        dialog = new InitiativeEditorDialog(
-          () => (dialog = null),
-          myCombatants
+      if (!game.combat.started) {
+        const needsInitiative = myCombatants.filter(
+          (myC) => myC.initiative == null
         );
-        dialog.render(true);
+        if (!dialog && needsInitiative.length > 0) {
+          dialog = new InitiativeEditorDialog(
+            () => (dialog = null),
+            myCombatants
+          );
+          dialog.render(true);
+        } else {
+          dialog.setCombatants(myCombatants);
+        }
       }
     }
   });
