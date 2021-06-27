@@ -1,7 +1,8 @@
 function createContent(combatants) {
-  return `<div id="edit-initiative-dialog"><h2>${
-    game.user.name
-  } enter your initiative values!</h2>
+  return `<div id="edit-initiative-dialog"><h2>${game.i18n.format(
+    "fvtt-player-initiative.UI.enterYourValues",
+    { name: game.user.name }
+  )}</h2>
   <div>${combatants
     .map(
       (c) =>
@@ -20,7 +21,7 @@ class InitiativeEditorDialog extends Dialog {
 
   constructor(close, combatants) {
     super({
-      title: "Roll for initiatve!",
+      title: game.i18n.localize("fvtt-player-initiative.UI.rollforInitiative"),
       content: createContent(combatants),
       buttons: {
         confirm: {

@@ -9,14 +9,21 @@
         const needsInitiative = myCombatants.filter(
           (myC) => myC.initiative == null
         );
-        if (!dialog && needsInitiative.length > 0) {
-          dialog = new InitiativeEditorDialog(
-            () => (dialog = null),
-            myCombatants
-          );
-          dialog.render(true);
-        } else {
-          dialog.setCombatants(myCombatants);
+        if (
+          game.settings.get(
+            PLAYER_INITIATIVE.MODULE_NAME,
+            PLAYER_INITIATIVE.SETTINGS.SHOW_DIALOG
+          )
+        ) {
+          if (!dialog && needsInitiative.length > 0) {
+            dialog = new InitiativeEditorDialog(
+              () => (dialog = null),
+              myCombatants
+            );
+            dialog.render(true);
+          } else {
+            dialog.setCombatants(myCombatants);
+          }
         }
       }
     }
