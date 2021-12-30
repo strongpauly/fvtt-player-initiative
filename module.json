@@ -2,7 +2,7 @@
   "name": "fvtt-player-initiative",
   "title": "Edit Player Initiative",
   "description": "Allow players to edit their own initiative",
-  "version": "1.1.3",
+  "version": "1.1.4",
   "author": "Paul Potsides",
   "scripts": [
     "constants.js",
@@ -19,7 +19,7 @@
   "download": "https://github.com/strongpauly/fvtt-player-initiative/archive/refs/heads/main.zip",
   "manifest": "https://raw.githubusercontent.com/strongpauly/fvtt-player-initiative/main/module.json",
   "minimumCoreVersion": "0.8.8",
-  "compatibleCoreVersion": "0.8.8",
+  "compatibleCoreVersion": "9",
   "languages": [
     {
       "lang": "en",
