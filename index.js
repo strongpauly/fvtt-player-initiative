@@ -13,9 +13,10 @@
           game.settings.get(
             PLAYER_INITIATIVE.MODULE_NAME,
             PLAYER_INITIATIVE.SETTINGS.SHOW_DIALOG
-          )
+          ) &&
+          (needsInitiative.length > 0 || dialog)
         ) {
-          if (!dialog && needsInitiative.length > 0) {
+          if (!dialog) {
             dialog = new InitiativeEditorDialog(
               () => (dialog = null),
               myCombatants

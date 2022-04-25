@@ -41,7 +41,7 @@ class InitiativeEditorDialog extends Dialog {
   }
 
   getInputs() {
-    const dialog = this._element[0];
+    const dialog = this.element[0];
     return this.combatants.map((c) =>
       dialog.querySelector(`input[name="combatant-${c.id}"]`)
     );
@@ -70,7 +70,7 @@ class InitiativeEditorDialog extends Dialog {
     let needsRerender = this.combatants.length !== combatants.length;
     inputs.forEach((input, i) => {
       const combatant = combatants[i];
-      if (input.name !== `combatant-${combatants.id}`) {
+      if (input.name !== `combatant-${combatant.id}`) {
         needsRerender = true;
       } else if (combatant.initiative != null) {
         input.valueAsNumber = combatant.initiative;
