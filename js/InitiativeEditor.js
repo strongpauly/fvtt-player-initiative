@@ -1,4 +1,6 @@
-class InitiativeEditor {
+import { initialiseInitiativeInput } from "./InitiativeInput.js";
+
+export class InitiativeEditor {
   constructor(combatant) {
     this.combatant = combatant;
     this.parentDiv = document.querySelector(

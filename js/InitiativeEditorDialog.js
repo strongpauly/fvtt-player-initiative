@@ -16,7 +16,7 @@ function createContent(combatants) {
     .join("")}</div></div>`;
 }
 
-class InitiativeEditorDialog extends Dialog {
+export class InitiativeEditorDialog extends Dialog {
   _confirming = false;
 
   constructor(close, combatants) {

@@ -1,4 +1,4 @@
-const initialiseInitiativeInput = (input, combatant, onBlur) => {
+export const initialiseInitiativeInput = (input, combatant, onBlur) => {
   const setInitiative = async (initiative) =>
     combatant.update({ _id: combatant.id, initiative });
 

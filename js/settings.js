@@ -1,3 +1,5 @@
+import { PLAYER_INITIATIVE } from "./constants.js";
+
 Hooks.on("init", function () {
   game.settings.register(
     PLAYER_INITIATIVE.MODULE_NAME,
