@@ -8,26 +8,24 @@ Hooks.on("renderCombatTracker", async () => {
     const myCombatants = game.combat.combatants.filter((c) => c.isOwner);
     myCombatants.forEach((c) => new InitiativeEditor(c));
 
-    if (!game.combat.started) {
-      const needsInitiative = myCombatants.filter(
-        (myC) => myC.initiative == null
-      );
-      if (
-        game.settings.get(
-          PLAYER_INITIATIVE.MODULE_NAME,
-          PLAYER_INITIATIVE.SETTINGS.SHOW_DIALOG
-        ) &&
-        (needsInitiative.length > 0 || dialog)
-      ) {
-        if (!dialog) {
-          dialog = new InitiativeEditorDialog(
-            () => (dialog = null),
-            myCombatants
-          );
-          dialog.render(true);
-        } else {
-          dialog.setCombatants(myCombatants);
-        }
+    const needsInitiative = myCombatants.filter(
+      (myC) => myC.initiative == null
+    );
+    if (
+      game.settings.get(
+        PLAYER_INITIATIVE.MODULE_NAME,
+        PLAYER_INITIATIVE.SETTINGS.SHOW_DIALOG
+      ) &&
+      (needsInitiative.length > 0 || dialog)
+    ) {
+      if (!dialog) {
+        dialog = new InitiativeEditorDialog(
+          () => (dialog = null),
+          myCombatants
+        );
+        dialog.render(true);
+      } else {
+        dialog.setCombatants(myCombatants);
       }
     }
   }
