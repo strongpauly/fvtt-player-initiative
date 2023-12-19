@@ -1,10 +1,14 @@
 {
   "title": "Edit Player Initiative",
   "description": "Allow players to edit their own initiative",
-  "version": "1.2.3",
-  "author": "Paul Potsides",
-  "esmodules": ["js/settings.js", "js/index.js"],
-  "styles": ["css/styles.css"],
+  "version": "1.2.4",
+  "esmodules": [
+    "js/settings.js",
+    "js/index.js"
+  ],
+  "styles": [
+    "css/styles.css"
+  ],
   "socket": true,
   "url": "https://github.com/strongpauly/fvtt-player-initiative",
   "download": "https://github.com/strongpauly/fvtt-player-initiative/archive/refs/heads/main.zip",
@@ -13,17 +17,19 @@
     {
       "lang": "en",
       "name": "English",
-      "path": "lang/en.json"
+      "path": "lang/en.json",
+      "flags": {}
     }
   ],
   "id": "fvtt-player-initiative",
   "authors": [
     {
-      "name": "Paul Potsides"
+      "name": "Paul Potsides",
+      "flags": {}
     }
   ],
   "compatibility": {
     "minimum": "10",
-    "verified": "11"
+    "verified": "12"
   }
 }
