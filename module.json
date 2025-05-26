@@ -7,7 +7,7 @@
     "scripts/index.js"
   ],
   "styles": [
-    "css/styles.css"
+    "styles/main.css"
   ],
   "socket": true,
 	"url": "#{URL}#",
