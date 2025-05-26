@@ -2,6 +2,9 @@ import { InitiativeEditor } from "./InitiativeEditor.js";
 import { InitiativeEditorDialog } from "./InitiativeEditorDialog.js";
 import { PLAYER_INITIATIVE } from "./constants.js";
 
+/**
+ * @type InitiativeEditorDialog | undefined
+ */
 let dialog;
 Hooks.on("renderCombatTracker", async () => {
 	if (game.combat && !game.user.isGM) {

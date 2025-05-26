@@ -18,7 +18,7 @@ function createContent(combatants) {
 export class InitiativeEditorDialog extends Dialog {
 	_confirming = false;
 
-	constructor(close, combatants) {
+	constructor(onClose, combatants) {
 		super({
 			title: game.i18n.localize("fvtt-player-initiative.UI.rollforInitiative"),
 			content: createContent(combatants),
@@ -33,7 +33,7 @@ export class InitiativeEditorDialog extends Dialog {
 			},
 			close: async () => {
 				await this.save();
-				close();
+				onClose();
 			}
 		});
 		this.combatants = combatants;
