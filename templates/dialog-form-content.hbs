@@ -1,0 +1,25 @@
+<section>
+	{{#each combatants}}
+		<div class="form-group">
+			<label for="combatant-{{this.id}}-input">{{this.name}}</label>
+			<div class="initiative-dialog-form-control">
+				<input
+					id="combatant-{{this.id}}-input"
+					name="combatant-{{this.id}}-input"
+					type="number"
+					class="initiative-dialog-input"
+					value="{{this.initiative}}"
+				/>
+				<a
+					id="combatant-{{this.id}}-button"
+					class="roll-initiative-button roll"
+					aria-label="Roll Initiative"
+					role="button"
+					data-tooltip="COMBAT.InitiativeRoll"
+					data-control="rollInitiative"
+					data-combatant-id="{{this.id}}"
+				></a>
+			</div>
+		</div>
+	{{/each}}
+</section>

@@ -25,10 +25,13 @@ export class InitiativeEditor {
 		};
 
 		this.parentDiv.addEventListener("click", (evt) => {
+			if (this.combatant.initiative == null) {
+				// Assume user was clicking to roll rather than edit.
+				return;
+			}
 			evt.stopPropagation();
 			evt.stopImmediatePropagation();
 			evt.preventDefault();
-			evt.cancelBubble = true;
 			toggle();
 		});
 	}
