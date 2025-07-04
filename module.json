@@ -1,35 +1,30 @@
 {
-  "title": "Edit Player Initiative",
-  "description": "Allow players to edit their own initiative",
-  "version": "#{VERSION}#",
-  "esmodules": [
-    "scripts/settings.js",
-    "scripts/index.js"
-  ],
-  "styles": [
-    "styles/main.css"
-  ],
-  "socket": true,
+	"title": "Edit Player Initiative",
+	"description": "Allow players to edit their own initiative",
+	"version": "#{VERSION}#",
+	"esmodules": ["scripts/settings.js", "scripts/index.js"],
+	"styles": ["styles/main.css"],
+	"socket": true,
 	"url": "#{URL}#",
 	"manifest": "#{MANIFEST}#",
 	"download": "#{DOWNLOAD}#",
-  "languages": [
-    {
-      "lang": "en",
-      "name": "English",
-      "path": "lang/en.json",
-      "flags": {}
-    }
-  ],
-  "id": "fvtt-player-initiative",
-  "authors": [
-    {
-      "name": "Paul Potsides",
-      "flags": {}
-    }
-  ],
-  "compatibility": {
-    "minimum": "12",
-    "verified": "13"
-  }
+	"languages": [
+		{
+			"lang": "en",
+			"name": "English",
+			"path": "lang/en.json",
+			"flags": {}
+		}
+	],
+	"id": "fvtt-player-initiative",
+	"authors": [
+		{
+			"name": "Paul Potsides",
+			"flags": {}
+		}
+	],
+	"compatibility": {
+		"minimum": "11",
+		"verified": "13"
+	}
 }

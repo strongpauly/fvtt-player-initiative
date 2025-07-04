@@ -1,15 +1,33 @@
 input[type="number"].initiative-input {
-  color: white;
+	color: white;
 }
 
 .initiative-editable {
-  cursor: text;
+	cursor: text;
 }
 
 #edit-initiative-dialog {
-  padding-bottom: 1rem;
+	padding-bottom: 1rem;
 }
 
 .initiative-dialog-input.invalid {
-  border: 1px solid red;
+	border: 1px solid red;
+}
+
+.initiative-dialog-form-control {
+	display: flex;
+	align-items: center;
+}
+
+.roll-initiative-button {
+	display: block;
+	width: 40px;
+	height: 40px;
+	background: url(/icons/svg/d20.svg) no-repeat 50% 50%;
+	background-size: 32px;
+	margin: 0 0.5em;
+}
+
+.roll-initiative-button:hover {
+	background-image: url(/icons/svg/d20-highlight.svg);
 }
