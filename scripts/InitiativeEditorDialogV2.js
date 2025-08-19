@@ -99,10 +99,26 @@ export class InitiativeEditorDialogV2 extends foundry.applications.api.Handlebar
 		await super._onSubmitForm(formConfig, event);
 		this.element?.querySelectorAll("input").forEach((input) => (input.disabled = true));
 		this.#saving = true;
-		const updates = this.#combatants.map((c, i) => ({
-			_id: c.id,
-			initiative: inputs[i].valueAsNumber
-		}));
+
+		let parseInitiative = (value) => value;
+		switch (game.system.id) {
+			case "dnd5e":
+				if (game.settings.get("dnd5e", "initiativeDexTiebreaker")) {
+					parseInitiative = (value, combatant) =>
+						Math.floor(value) + combatant.actor.system.abilities.dex.value / 100;
+				}
+				break;
+			default:
+				break;
+		}
+
+		const updates = this.#combatants.map((c, i) => {
+			const initiative = parseInitiative(inputs[i].valueAsNumber, c);
+			return {
+				_id: c.id,
+				initiative
+			};
+		});
 		await Promise.all(this.#combatants.map((c, i) => c.update(updates[i])));
 		await this.close();
 		this.#saving = false;
