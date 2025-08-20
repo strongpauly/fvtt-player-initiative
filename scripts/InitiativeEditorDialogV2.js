@@ -52,8 +52,19 @@ export class InitiativeEditorDialogV2 extends foundry.applications.api.Handlebar
 		if (this.#saving) {
 			return;
 		}
+		const needsRerender =
+			!this.#combatants ||
+			combatants.length !== this.#combatants.length ||
+			combatants.some((c) => !this.getInput(c.id));
 		this.#combatants = combatants;
-		this.render(true);
+		if (needsRerender) {
+			this.render();
+		} else {
+			this.#combatants.forEach((c) => {
+				const input = this.getInput(c.id);
+				input.valueAsNumber = c.initiative ?? input.valueAsNumber;
+			});
+		}
 	}
 
 	/** @inheritDoc */
