@@ -6,7 +6,7 @@
 	"styles": ["styles/main.css"],
 	"socket": true,
 	"url": "#{URL}#",
-	"manifest": "#{MANIFEST}#",
+	"manifest": "https://github.com/strongpauly/fvtt-player-initiative/releases/latest/download/module.json",
 	"download": "#{DOWNLOAD}#",
 	"languages": [
 		{
@@ -26,6 +26,6 @@
 	"compatibility": {
 		"minimum": "11",
 		"maximum": "14",
-		"verified": "13"
+		"verified": "14"
 	}
 }
